@@ -10,12 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
 Route::get('/', function()
 {
-	return View::make('home');
+	return View::make('tripuser');
 });
 
 Route::get('/charts', function()
@@ -78,3 +75,25 @@ Route::get('/documentation', function()
 {
 	return View::make('documentation');
 });
+
+Route::get('/app', function()
+{
+	return View::make('app');
+});
+
+Route::get('/tripuser', function()
+{
+	return View::make('tripuser');
+});
+
+Route::get('/welcome', function()
+{
+	return View::make('welcome');
+});
+Route::get('/logout',function(){
+	Auth::logout();
+	return redirect('/login');
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
