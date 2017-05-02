@@ -12,7 +12,7 @@
 */
 Route::get('/', function()
 {
-	return View::make('tripuser');
+	return View::make('home');
 });
 
 Route::get('/charts', function()
@@ -81,19 +81,6 @@ Route::get('/app', function()
 	return View::make('app');
 });
 
-Route::get('/tripuser', function()
-{
-	return View::make('tripuser');
-});
-
-Route::get('/welcome', function()
-{
-	return View::make('welcome');
-});
-Route::get('/logout',function(){
-	Auth::logout();
-	return redirect('/login');
-});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
