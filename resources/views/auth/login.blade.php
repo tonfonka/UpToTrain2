@@ -1,57 +1,68 @@
-<!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Login</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
 
-    <title>Login</title>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">E-Mail Agency</label>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+                            <div class="col-md-6">
+                                <input id="agency_email" type="email" class="form-control" name="agency_emaill" value="{{ old('email') }}" required autofocus>
 
-    
-</head>
-      
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('agency_email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Password</label>
 
-</head>
+                            <div class="col-md-6">
+                                <input id="agency_password" type="password" class="form-control" name="agency_password" required>
 
-<body>
-  <div class="login">
-    <a hef = "/"><h1>Log In</h1></a>
+                                @if ($errors->has('agency_password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('agency_password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-    <form class="form" method="post" action="/">
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
 
-      <p class="field">
-      <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="text" name="Agencyemail" placeholder="อีเมลล์" required/>
-        <i class="fa fa-user"></i>
-      </p>
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
 
-      <p class="field">
-        <input type="password" name="password" placeholder="รหัสผ่าน" required/>
-        <i class="fa fa-lock"></i>
-      </p>
-
-      
-      <p class="submit">
-        <a href="home"><input type="submit" name="login" value="เข้าสู่ระบบ"></a>
-      </p>
-      <p class="regis">
-        <a href="register"><input type="regis" name="login" value="สมัครสมาชิก"></a>
-      </p>
-
-    </form>
-  </div> <!--/ Login-->
-<!--
-<div class="copyright">
-    <p>Copyright &copy; 2017. Created by <a href="/uptotrain/resources/index" target="_blank">UpToTrain</a></p>
-  
-  -->
-</body>
-</html>
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    Forgot Your Password?
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
