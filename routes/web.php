@@ -84,3 +84,11 @@ Route::get('/app', function()
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/add', 'tripController@addTrip');
+//Route::get('/addtripround', 'tripController@add_tripRound');
+
+Route::resource('/addtrip','addtripController');
+Route::resource('/show','showtripController');
+Route::resource('/showtrip','tripAgencyController'); 
+Route::resource('/','tripController');
+Route::resource('/addtripround','addtriproundController');
