@@ -29,14 +29,18 @@ Route::get('/app', function()
 	return View::make('app');
 });
 
-Route::get('/tripuser', function()
+Route::get('/addTrip', function()
 {
-	return View::make('tripuser');
+	return View::make('/addtrip');
+});
+Route::get('/headlogo', function()
+{
+	return View::make('/headlogo');
 });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/add', 'tripController@addTrip');
+Route::get('/agency', 'tripController@index');
 
 //Route::get('/addtripround', 'tripController@add_tripRound');
 

@@ -12,10 +12,10 @@
     <title>UP TO TRAIN</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="css/travelAgency.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -84,34 +84,23 @@
 
 
     <div class="container">
-
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">
-                    TRIP
-                </h1>
+                <h1 class="page-header">OUR TRIP</h1>
             </div>
-
-            <div class="col-md-4">
-                <div class="panel panel-default">
+            <!--<div class="col-md-4">
+               <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4><i class="glyphicon glyphicon-plus"></i>ADD TRIP </h4>
                     </div>
                     <div class="panel-body">
-
-                        <a href="/addtrip">
-                            <img class="img-responsive img-portfolio img-hover " src="pic/ADD1.png" alt="">
-                        </a>
-
-
-
-
+                        <a href="/addtrip"><img class="img-responsive img-portfolio img-hover " src="pic/ADD1.png" alt=""></a>
                     </div>
                 </div>
-            </div>
+            </div>-->
+             
              <div class="container">
-
  @foreach ($trips as $trip)
             <div class="col-md-4">
                 <div class="panel panel-default">
