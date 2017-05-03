@@ -37,6 +37,10 @@ Route::get('/headlogo', function()
 {
 	return View::make('/headlogo');
 });
+Route::get('/dashboard', function()
+{
+	return view('/dashboard');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
