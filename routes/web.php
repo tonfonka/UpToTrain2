@@ -53,3 +53,7 @@ Route::resource('/show','showtripController');
 Route::resource('/showtrip','tripAgencyController'); 
 Route::resource('/trip','tripController');
 Route::resource('/addtripround','addtriproundController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
