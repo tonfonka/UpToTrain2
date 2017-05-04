@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,7 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/modern-business.css" rel="stylesheet">
-
+    <link href="css/addtrip.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -48,7 +48,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 
-                   <li>
+                    <li>
                         <a href="TravelAgency_home.html">H0ME</a>
                     </li>
                     <li>
@@ -67,93 +67,247 @@
         <!-- /.container -->
     </nav>
 
+    <div class="container">
+        <div class="row">
+            <section>
+                <div class="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line"></div>
+                        <ul class="nav nav-tabs" role="tablist">
 
-<div class="container">
- <div class="row">
-            <div class="col-md-8">
-                <h3>ADD TRIP </h3>
-                <hr>
-                <form action="{{ url('/addtrip') }}"   method="POST" id='addtripform'>
-                   <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                    <div class="control-group form-group">
-                        <div class="controls">
-                         {{ csrf_field() }}
-                            <label>TRIP NAME</label>
-                            <input type="text" class="form-control" id="trips_name" required data-validation-required-message="Please enter your TRIP name.">
-                            <p class="help-block"></p>
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>PERIOD</label>
-                            <input type="PERIOD" class="form-control" id="trip_nday" required data-validation-required-message="Please enter your PERIOD">
-                            <input type="PERIOD" class="form-control" id="trip_nnight" required data-validation-required-message="Please enter your PERIOD">
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>province : </label>
-                            <input type="COUNTRY" class="form-control" id="trip_province" required data-validation-required-message="Please enter TRAVEL COUNTRY">
-                        </div>
-                    </div>
-                     <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Number_Meal </label>
-                            <input type="Number_Meal" class="form-control" id="trip_meal" required data-validation-required-message="Please enter Number_Meal">
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>description : </label>
-                            <textarea rows="10" cols="100" class="form-control" id="trip_description" required data-validation-required-message="Please enter your description" maxlength="999" style="resize:none"></textarea>
-                        </div>
-                    </div>
-                    <div id="success"></div>
-                    <!-- For success/fail messages -->
-                    <button type='submit' class='btn btn-primary' >submit</button>
-                </form>
-            </div>
+                            <li role="presentation" class="active">
+                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                                    <span class="round-tab">
+                                <i class="glyphicon glyphicon-folder-open"></i>
+                            </span>
+                                </a>
+                            </li>
 
+                            <li role="presentation" class="disabled">
+                                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                                    <span class="round-tab">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </span>
+                                </a>
+                            </li>
+
+                            <li role="presentation" class="disabled">
+                                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                                    <span class="round-tab">
+                                <i class="glyphicon glyphicon-ok"></i>
+                            </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <form role="form">
+                        <div class="tab-content">
+                            <div class="tab-pane active" role="tabpanel" id="step1">
+                                <div class="step1">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="exampleInputEmail1">Trip Name</label>
+                                            <input type="text" class="form-control" id="tripName" placeholder="Trip Name">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="exampleInputEmail1">Day(s)</label>
+                                            <input type="text" class="form-control" id="tripDay" placeholder="Day(s)">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="exampleInputEmail1">Night(s)</label>
+                                            <input type="text" class="form-control" id="tripNight" placeholder="Night(s)">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="exampleInputEmail1">Meal(s)</label>
+                                            <input type="text" class="form-control" id="tripMeal" placeholder="Meal(s)">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="exampleInputEmail1">Description</label>
+                                            <input type="textarea" class="form-control" id="tripDes" placeholder="Description">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="exampleInputEmail1">Province</label>
+                                            <input type="text" class="form-control" id="tripPro" placeholder="Province">
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="step2">
+                                <div class="step2">
+                                    <div class="step_21">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>start_day</label>
+                                                <input class="form-control start_day" type="date" value='' required data-validation-required-message="Please enter your ROUND TRIP">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Departure_Date :</label>
+                                                <input class="form-control Departure_Date" type="date" value='' required data-validation-required-message="Please enter your ROUND TRIP">
+                                                <br>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Price_Children : </label>
+                                                <input type="number" class="form-control" name="Price_Children">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Price_ADUIT : </label>
+                                                <input type="number" class="form-control" name="Price_ADUIT" required data-validation-required-message="Please enter Price_ADUIT ">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <label>รายละเอียดทัวร์ : </label>
+                                                    <br>
+                                                    <label>DAY <input type="number"> :</label>
+                                                </div>
+                                                <div class="control-group form-group con" id='controls'>
+                                                    <!--for Add Activity-->
+                                                </div>
+                                                <div class="control-group form-group con" id='controlss'>
+                                                    <!--for Add Activity-->
+                                                </div>
+                                                <script type="text/javascript">
+                                                    let i = 0;
+                                                    let components = [];
+                                                    const button =
+                                                        `<label><button type="button" class="btn btn-primary" id='btn' >ADD Activity</button></label>`;
+                                                    const componentTemplate = (id1) =>
+                                                        `<div class="controls" id='${id1}'>
+                                                            <table class="table">
+                                                                <tr>
+                                                                    <td>TIME</td>
+                                                                    <td>LOCATION</td>
+                                                                    <td>DETAILS</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><input class="form-control" type="time"></td>
+                                                                    <td><input class="form-control" type="text"></td>
+                                                                    <td><input class="form-control" type="text"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><input class="form-control" type="time"></td>
+                                                                    <td><input class="form-control" type="text"></td>
+                                                                    <td><input class="form-control" type="text"></td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>`;
+
+                                                    const bindComponent = (components) => {
+                                                        document.getElementById('controls').innerHTML = ''
+                                                        components.map(component => {
+                                                            document.getElementById('controls').innerHTML +=
+                                                                component;
+                                                        });
+                                                        document.getElementById('controls').innerHTML += button;
+                                                        document.getElementById('btn').addEventListener('click',
+                                                            onClickHandler);
+                                                    }
+
+                                                    const onClickHandler = (e) => {
+                                                        let latestComponent = document.getElementById(i - 1);
+                                                        components[i - 1] =
+                                                            `<div class="controls" id1='${i-1}'>
+        		                                                ${latestComponent.innerHTML}
+        		                                            </div>`;
+                                                        const newComponent = componentTemplate(i);
+                                                        components.push(newComponent);
+                                                        i++;
+                                                        bindComponent(components);
+                                                    }
+
+                                                    let component = componentTemplate(i);
+                                                    i++;
+                                                    components.push(component);
+                                                    bindComponent(components);
+                                                </script>
+                                                <script type="text/javascript">
+                                                    let i = 0;
+                                                    let components = [];
+                                                    const button =
+                                                        `<label><button type="button" class="btn btn-primary" id='btn' >ADD Day</button></label>`;
+                                                    const componentTemplate = (id2) =>
+                                                        `<div class="controlss" id='${id2}'>
+                                                            <div class="col-md-6">
+                                                                <label>รายละเอียดทัวร์ : </label>
+                                                                <br>
+                                                                <label>DAY <input type="number"> :</label>
+                                                            </div>
+                                                            <table class="table">
+                                                                <tr>
+                                                                    <td>TIME</td>
+                                                                    <td>LOCATION</td>
+                                                                    <td>DETAILS</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><input class="form-control" type="time"></td>
+                                                                    <td><input class="form-control" type="text"></td>
+                                                                    <td><input class="form-control" type="text"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><input class="form-control" type="time"></td>
+                                                                    <td><input class="form-control" type="text"></td>
+                                                                    <td><input class="form-control" type="text"></td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>`;
+
+                                                    const bindComponent = (components) => {
+                                                        document.getElementById('controls').innerHTML = ''
+                                                        components.map(component => {
+                                                            document.getElementById('controls').innerHTML +=
+                                                                component;
+                                                        });
+                                                        document.getElementById('controls').innerHTML += button;
+                                                        document.getElementById('btn').addEventListener('click',
+                                                            onClickHandler);
+                                                    }
+
+                                                    const onClickHandler = (e) => {
+                                                        let latestComponent = document.getElementById(i - 1);
+                                                        components[i - 1] =
+                                                            `<div class="controls" id1='${i-1}'>
+        		                                                ${latestComponent.innerHTML}
+        		                                            </div>`;
+                                                        const newComponent = componentTemplate(i);
+                                                        components.push(newComponent);
+                                                        i++;
+                                                        bindComponent(components);
+                                                    }
+
+                                                    let component = componentTemplate(i);
+                                                    i++;
+                                                    components.push(component);
+                                                    bindComponent(components);
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                    <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="complete">
+                                <div class="step44">
+                                    <h1>Completed!!!!</h1>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </section>
         </div>
-        <!-- /.row -->
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <hr>
-    <!-- Footer -->
+    </div>
+    <!-- Footer 
     <footer>
         <div class="row">
             <div class="col-lg-12">
@@ -170,7 +324,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
+    <script src="js/addtripform.js"></script>
     <!-- Script to Activate the Carousel -->
     <script>
         $('.carousel').carousel({
