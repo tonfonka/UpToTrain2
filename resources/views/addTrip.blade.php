@@ -73,39 +73,39 @@
             <div class="col-md-8">
                 <h3>ADD TRIP </h3>
                 <hr>
-                <form action="{{ url('/addtrip') }}"   method="POST" id='addtripform'>
+                <form action="/addtripround"   method="POST">
                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="control-group form-group">
                         <div class="controls">
                          {{ csrf_field() }}
                             <label>TRIP NAME</label>
-                            <input type="text" class="form-control" id="trips_name" required data-validation-required-message="Please enter your TRIP name.">
+                            <input type="text" class="form-control" name="trips_name" required data-validation-required-message="Please enter your TRIP name.">
                             <p class="help-block"></p>
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>PERIOD</label>
-                            <input type="PERIOD" class="form-control" id="trip_nday" required data-validation-required-message="Please enter your PERIOD">
-                            <input type="PERIOD" class="form-control" id="trip_nnight" required data-validation-required-message="Please enter your PERIOD">
+                            <input type="PERIOD" class="form-control" name="trip_nday" required data-validation-required-message="Please enter your PERIOD">
+                            <input type="PERIOD" class="form-control" name="trip_nnight" required data-validation-required-message="Please enter your PERIOD">
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>province : </label>
-                            <input type="COUNTRY" class="form-control" id="trip_province" required data-validation-required-message="Please enter TRAVEL COUNTRY">
+                            <input type="COUNTRY" class="form-control" name="trip_province" required data-validation-required-message="Please enter TRAVEL COUNTRY">
                         </div>
                     </div>
                      <div class="control-group form-group">
                         <div class="controls">
                             <label>Number_Meal </label>
-                            <input type="Number_Meal" class="form-control" id="trip_meal" required data-validation-required-message="Please enter Number_Meal">
+                            <input type="Number_Meal" class="form-control" name="trip_meal" required data-validation-required-message="Please enter Number_Meal">
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>description : </label>
-                            <textarea rows="10" cols="100" class="form-control" id="trip_description" required data-validation-required-message="Please enter your description" maxlength="999" style="resize:none"></textarea>
+                            <textarea rows="10" cols="100" class="form-control" name="trip_description" required data-validation-required-message="Please enter your description" maxlength="999" style="resize:none"></textarea>
                         </div>
                     </div>
                     <div id="success"></div>

@@ -44,7 +44,7 @@ class tripController extends Controller
      */
     public function store(Request $request)
     {
-         DB::table('trips')
+        $trips =  DB::table('trips')
         ->insertGetId([ 
             "trip_name" => $request->input('trip_name'),
             "trip_nday" => $request->input('trip_nday'),
@@ -53,6 +53,7 @@ class tripController extends Controller
             "trip_meal" =>$request->input('trip_meal'),
             "trip_description" => $request->input('trip_description')
             ]);
+             return view('add_tripround', ['trips' => $trips]);
     }
 
     /**

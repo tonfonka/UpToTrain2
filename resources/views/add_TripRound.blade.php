@@ -112,7 +112,7 @@
                     <div class="controls">
                         <label>รายละเอียดทัวร์ : </label>
                         <br>
-                        <label>DAY <input type="number"> :</label>
+                        <input class="form-control" name='schedule_day'  type="time" >
                         <table class="table">
                             <tr>
                                 <td>TIME</td>
@@ -120,9 +120,9 @@
                                 <td>DETAILS</td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="time"></td>
-                                <td><input class="form-control" type="text"></td>
-                                <td><input class="form-control" type="text"></td>
+                                <td><input class="form-control" name='schedule_time'  type="time" ></td>
+                                <td><input class="form-control" name='schedule_place' type="text"></td>
+                                <td><input class="form-control" name='schedule_description' type="text"></td>
                             </tr>
                             <tr>
                                 <td><input class="form-control" type="time"></td>
@@ -146,8 +146,9 @@
                 </div>
             </div>
             <div id="success"></div>
+            <input type="hidden" value="{{ $tripId }}">
             <!-- For success/fail messages -->
-            <a href="#"> <button type="submit" class="btn btn-primary">SUBMIT</button></a>
+            <button type="submit" class="btn btn-primary">SUBMIT</button>
             </form>
         </div>
     </div>

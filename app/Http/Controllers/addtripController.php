@@ -40,30 +40,20 @@ class addtripController extends Controller
      */
     public function store(Request $request)
     {
-         // DB::table('trips')
-       // ->insertGetId([ 
-      //      "trips_name" => $request->input('trips_name'),
-      //      "trip_nday" => $request->input('trip_nday'),
-      //      "trip_nnight" => $request->input('trip_nnight'),
-      //      "trip_province" => $request->input('trip_province'),
-      //      "trip_meal" =>$request->input('trip_meal'),
-      //      "trip_description" => $request->input('trip_description'),
-      //      "travelagency_id"=> $request->input( "travelagency_id",'1'),
-      //      "source_id"=>$request->input("source_id",'1'),
-       //     "destination_id"=>$request->input( "source_id",'1')
-       //     ]);
-            
-           $objs1 = new trip();
-           $obj1->trips_name =$request['trips_name'];
-           $objs->trip_nday = $request['trip_nday'];
-           $objs->trip_nnight=$request['trip_nnight'];
-           $objs->trip_province =$request['trip_province'];
-           $objs->trip_meal =$request['trip_meal'];
-           $objs->trip_description=$request['trip_description'];
-           $objs->travelagency_id=$request['1'];
-           $objs->source_id=$request['1'];
-           $objs->destination_id=$request['10'];
-           $objs->save();
+         DB::table('trips')
+       ->insertGetId([ 
+           "trips_name" => $request->input('trips_name'),
+           "trip_nday" => $request->input('trip_nday'),
+           "trip_nnight" => $request->input('trip_nnight'),
+           "trip_province" => $request->input('trip_province'),
+           "trip_meal" =>$request->input('trip_meal'),
+           "trip_description" => $request->input('trip_description'),
+           "travelagency_id"=> $request->input( "travelagency_id",'1'),
+           "source_id"=>$request->input("source_id",'1'),
+           "destination_id"=>$request->input( "source_id",'1')
+           ]);
+        $data = DB::table('trips')->where('trips_name')->select('id')->first();
+           return view('add_TripRound',  ['obj1' => $data]);
 
     }
 
