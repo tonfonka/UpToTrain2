@@ -7186,7 +7186,7 @@ button.close {
     white-space: normal;
     filter: alpha(opacity=0);
     opacity: 0;
-    line-break: auto;
+    /*line-break: auto;*/
 }
 
 .tooltip.in {
@@ -7326,7 +7326,7 @@ button.close {
     border-radius: 6px;
     -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-    line-break: auto;
+    /*line-break: auto;*/
 }
 
 .popover.top {
