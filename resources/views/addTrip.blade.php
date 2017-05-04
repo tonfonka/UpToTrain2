@@ -66,7 +66,6 @@
         </div>
         <!-- /.container -->
     </nav>
-
     <div class="container">
         <div class="row">
             <section>
@@ -100,7 +99,6 @@
                             </li>
                         </ul>
                     </div>
-
                     <form role="form">
                         <div class="tab-content">
                             <div class="tab-pane active" role="tabpanel" id="step1">
@@ -317,7 +315,7 @@
     </footer>
 
     </div>
-    <!-- /.container -->
+    /.container -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
