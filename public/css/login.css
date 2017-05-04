@@ -52,7 +52,7 @@ body {
     position: relative;
     margin: 100px auto;
     width: 370px;
-    height: 330px;
+    height: 315px;
     background: white;
     border-radius: 3px;
 }
@@ -83,10 +83,6 @@ body {
 }
 
 .login .submit {
-    text-align: center;
-}
-
-.login .regis {
     text-align: center;
 }
 
@@ -173,10 +169,6 @@ input[type=password] {
     outline: none;
 }
 
-.form button[type=regis]:focus {
-    outline: none;
-}
-
 .form input[type=submit] {
     margin-top: 15px;
     width: 270px;
@@ -201,36 +193,6 @@ input[type=password] {
 
 .form input[type=submit]:hover,
 input[type=submit]:focus {
-    color: #fff;
-    box-shadow: inset 0px 46px 0px 0px #fed136;
-    -webkit-animation: shadowFade 0.4s;
-    -moz-animation: shadowFade 0.4s;
-}
-
-.form input[type=regis] {
-    margin-top: 0px;
-    width: 270px;
-    text-align: center;
-    font-size: 14px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    padding: 10px 0;
-    letter-spacing: 0;
-    box-shadow: inset 0px 0px 0px 0px #fed136;
-    color: #fff;
-    background-color: #16a085;
-    text-shadow: none;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    margin-bottom: 0px;
-    -webkit-animation: shadowFadeOut 0.4s;
-    -moz-animation: shadowFadeOut 0.4s;
-}
-
-.form input[type=regis]:hover,
-input[type=regis]:focus {
     color: #fff;
     box-shadow: inset 0px 46px 0px 0px #fed136;
     -webkit-animation: shadowFade 0.4s;
