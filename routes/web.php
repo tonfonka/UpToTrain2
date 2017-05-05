@@ -41,6 +41,12 @@ Route::get('/dashboard', function()
 {
 	return view('/dashboard');
 });
+
+Route::get('/listGrid', function()
+{
+	return view('/listGrid');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

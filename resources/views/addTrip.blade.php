@@ -142,7 +142,8 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <label>start_day</label>
-                                                <input class="form-control start_day" type="date" value='' required data-validation-required-message="Please enter your ROUND TRIP">
+                                                <input class="form-control start_day" name ="start_date"type="date" value='' required data-validation-required-message="Please enter your ROUND TRIP"><?php echo date('d F Y', strtotime($post->start_date)); ?>                                              
+
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Departure_Date :</label>
