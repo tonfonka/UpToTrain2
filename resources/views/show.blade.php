@@ -48,7 +48,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 
-                  <li>
+                    <li>
                         <a href="TravelAgency_home.html">H0ME</a>
                     </li>
                     <li>
@@ -69,50 +69,51 @@
 
 
     <div class="container">
-        <div class="row">
-        @foreach($trips as $d)
-            <div class="col-md-8">
-            
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">
-  {{$d->trips_name}}
-  </div>
-  <div class="panel-body">
-     {{$d->trip_description}}
-  </div>
+        <div class="form">
+            <div class="row">
+                @foreach($trips as $d)
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">
+                            {{$d->trips_name}}
+                        </div>
+                        <div class="panel-body">
+                            {{$d->trip_description}}
+                        </div>
+                        <!-- Table -->
+                        <table class="table">
 
-  <!-- Table -->
-  <table class="table">
- 
-    <tr>
-        <td>
-    {{$d->id}}
-        <td>
-    </tr>
-    <tr>
-        <td>
-    {{$d->id}}
-        <td>
-    </tr>
-    <tr>
-        <td>
-    {{$d->id}}
-        <td>
-    </tr>
-    <tr>
-        <td>
-    {{$d->id}}
-        <td>
-    </tr>
-    
-  </table>
-</div>
-</div>
-@endforeach
-</div>
-</div>
-<hr>
+                            <tr>
+                                <td>
+                                    {{$d->id}}
+                                    <td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{$d->id}}
+                                    <td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{$d->id}}
+                                    <td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{$d->id}}
+                                    <td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    </div>
+    <hr>
     <!-- Footer -->
     <footer>
         <div class="row">
