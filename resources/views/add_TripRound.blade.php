@@ -69,13 +69,15 @@
 
 
     <div class="container">
+        <form action="/show" method="POST">
+
         <div class="row">
             <div class="col-md-8">
                 <h3>ADD TRIP </h3>
                 <hr>
-                <form name="senttrip" id="contactForm" novalidate>
+                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="control-group form-group">
-                        
+                        {{ csrf_field() }}
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
@@ -99,9 +101,11 @@
                     <div class="controls">
                         <label>อัตราค่าบริการ  </label>
                         <label>Price_Children : </label>
-                        <input type="number" class="form-control" name="Price_Children">
+                        <input type="text" class="form-control" name="price_child">
                         <label>Price_ADUIT : </label>
-                        <input type="number" class="form-control" name="Price_ADUIT" required data-validation-required-message="Please enter Price_ADUIT ">
+                        <input type="text" class="form-control" name="price_adult" required data-validation-required-message="Please enter Price_ADUIT ">
+<label>amount_seats : </label>
+                        <input type="text" class="form-control" name="amount_seats" required data-validation-required-message="Please enter Price_ADUIT ">
 
                     </div>
                 </div>
@@ -112,7 +116,8 @@
                     <div class="controls">
                         <label>รายละเอียดทัวร์ : </label>
                         <br>
-                        <input class="form-control" name='schedule_day'  type="time" >
+                        วันแรก
+                        <input class="form-control" name='schedule_day'  type="text"  >
                         <table class="table">
                             <tr>
                                 <td>TIME</td>
@@ -125,12 +130,7 @@
                                 <td><input class="form-control" name='schedule_description' type="text"></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="time"></td>
-                                <td><input class="form-control" type="text"></td>
-                                <td><input class="form-control" type="text"></td>
-                            </tr>
-                            <tr>
-                                <td><button type="button" class="btn btn-primary">ADD NEXT DAY</button></td>
+                               
                             </tr>
                         </table>
                     </div>
@@ -146,13 +146,14 @@
                 </div>
             </div>
             <div id="success"></div>
-            <input type="hidden" value="{{ $tripId }}">
+            <input type="hidden" name="trip_id" value="{{ $tripId }}">
             <!-- For success/fail messages -->
             <button type="submit" class="btn btn-primary">SUBMIT</button>
-            </form>
+            
         </div>
     </div>
     <!-- /.row -->
+    </form>
 
 
  <script type="text/javascript">
@@ -162,9 +163,9 @@
 
     	const componentTemplate = (id) => `<div class="controls" id='${id}'>
                         <label>start_day</label>
-                        <input class="form-control start_day" type="date" value='' required data-validation-required-message="Please enter your ROUND TRIP">
+                        <input class="form-control start_day" name="start_date" type="date" value='' required data-validation-required-message="Please enter your ROUND TRIP">
                         <label>Departure_Date :</label>
-                        <input class="form-control Departure_Date" type="date" value='' required data-validation-required-message="Please enter your ROUND TRIP">
+                        <input class="form-control Departure_Date" name="departure_date" type="date" value='' required data-validation-required-message="Please enter your ROUND TRIP">
                         <br>
                     </div>`;
 

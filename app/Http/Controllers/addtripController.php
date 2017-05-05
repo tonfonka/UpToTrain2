@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Trip;
+use App\trip;
 use DB;
 
 
@@ -53,7 +53,7 @@ class addtripController extends Controller
            "destination_id"=>$request->input( "source_id",'1')
            ]);
         $data = DB::table('trips')->where('trips_name')->select('id')->first();
-           return view('add_TripRound',  ['obj1' => $data]);
+           return view('add_TripRound',  ['tripId' => $data]);
 
     }
 

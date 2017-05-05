@@ -51,7 +51,7 @@ class addtriproundController extends Controller
            "destination_id"=>$request->input( "source_id", '1')
            ]);
         $tripId = Trip::where('trips_name', $request->input('trips_name'))->first();
-        return view('add_TripRound', ['tripId'=> $tripId]);
+        return view('add_TripRound', ['tripId'=> $tripId->id]);
     }
 
     /**

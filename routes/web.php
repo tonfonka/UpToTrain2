@@ -53,6 +53,7 @@ Route::resource('/show','showtripController');
 Route::resource('/showtrip','tripAgencyController'); 
 Route::resource('/trip','tripController');
 Route::resource('/addtripround','addtriproundController');
+Route::resource('/completetrip','comptelttripController');
 
 Auth::routes();
 

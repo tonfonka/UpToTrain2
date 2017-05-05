@@ -112,6 +112,7 @@
 @endforeach
 </div>
 </div>
+  <input type="hidden" value="{{ $tripId }}" name="tripId">
 <hr>
     <!-- Footer -->
     <footer>
