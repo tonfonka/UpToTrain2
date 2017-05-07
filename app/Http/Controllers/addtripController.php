@@ -41,7 +41,7 @@ class addtripController extends Controller
     public function store(Request $request)
     {
          DB::table('trips')
-       ->insertGetId([ 
+        ->insertGetId([ 
            "trips_name" => $request->input('trips_name'),
            "trip_nday" => $request->input('trip_nday'),
            "trip_nnight" => $request->input('trip_nnight'),
@@ -81,7 +81,7 @@ class addtripController extends Controller
      */
     public function edit($id)
     {
-        //$obj=Trips::find($id);
+        $obj=trip::find($id);
        
     }
 
@@ -94,26 +94,38 @@ class addtripController extends Controller
      */
     public function update(Request $request, $id)
     {
-         DB::table('trips')
-            ->where('id', $id)
-            ->update([
-                 "trips_name" => $request->input('trips_name'),
+        //  DB::table('trips')
+        //     ->where('id', $id)
+        //     ->update([
+        //     "trips_name" => $request->input('trips_name'),
+        //     "trip_nday" => $request->input('trip_nday'),
+        //     "trip_nnight" => $request->input('trip_nnight'),
+        //     "trip_province" => $request->input('trip_province'),
+        //     "trip_meal" =>$request->input('trip_meal'),
+        //     "trip_description" => $request->input('trip_description')
+        //     ]);
+        //     DB::table('triprounds')
+        //     ->where('id',$id)
+        //     ->update([
+        //        "start_date" => $request->input('start_date'),
+        //         "departure_date" =>$request->input('departure_date'),
+        //         "price_child" =>$request->input('price_child'),
+        //         "price_adult" =>$request->input('price_adult'),
+        //         "amount_seats" =>$request->input('amount_seats'),
+        //         "triprounds_description" =>$request->input('triprounds_description')
+        //     ]);
+
+        DB::table('trips')
+        ->where('id',$id)
+        ->update([
+            "trips_name" => $request->input('trips_name'),
             "trip_nday" => $request->input('trip_nday'),
             "trip_nnight" => $request->input('trip_nnight'),
             "trip_province" => $request->input('trip_province'),
             "trip_meal" =>$request->input('trip_meal'),
             "trip_description" => $request->input('trip_description')
             ]);
-            DB::table('triprounds')
-            ->where('id',$id)
-            ->update([
-               "start_date" => $request->input('start_date'),
-                "departure_date" =>$request->input('departure_date'),
-                "price_child" =>$request->input('price_child'),
-                "price_adult" =>$request->input('price_adult'),
-                "amount_seats" =>$request->input('amount_seats'),
-                "triprounds_description" =>$request->input('triprounds_description')
-            ]);
+    
     }
 
     /**

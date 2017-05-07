@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller; 
 use DB;
 use Illuminate\Http\Request;
-use App\trip;
+use App\tripround;
+use App\schedule;
 class showtripController extends Controller
 {
     /**
@@ -14,8 +15,17 @@ class showtripController extends Controller
      */
     public function index()
     {
+
         $trips = DB::table('trips')->get();
-        return view('show',['trips' => $trips]);
+        $tripround =DB::table('triprounds')->join('trips','trips.id','=','triprounds.trip_id')->get();
+        $travelagency =DB::table('travelagency')->get();
+        $data=array(
+            'trips' =>$trips,
+            'travelagency'=>$travelagency,
+            'tripround' =>$tripround
+            
+        );
+        return view('TravelAgency_home',$data);
       //  return view('TravelAgency_home',['data'=> $trips]);
     }
 
@@ -37,27 +47,64 @@ class showtripController extends Controller
      */
     public function store(Request $request)
     {
-    
-      DB::table('triprounds')
-        ->insertGetId([ 
-               "start_date" => $request->input('start_date'),
-               "departure_date" =>$request->input('departure_date'),
-               "price_child" =>$request->input('price_child'),
-               "price_adult" =>$request->input('price_adult'),
-               "amount_seats" =>$request->input('amount_seats'),
-               "triprounds_description" =>$request->input('triprounds_description'),
-               "trip_id" =>$request->input('trip_id')
-            ]);
-            DB::table('schedules')
-            ->insertGetId([
-               "schedule_day" =>$request->input('schedule_day'),
-               "schedule_time" =>$request->input('schedule_time'),
-               "schedule_place" =>$request->input('schedule_place'),
-               "schedule_description" =>$request->input('schedule_description'),
-               "trip_id" =>$request->input('trip_id')
-            ]);
-            return redirect('/agency');
+    $startDate = $request->input('start_date');
+    $departureDate = $request->input('departure_date');
+    $priceChild = $request->input('price_child');
+    $priceAdult = $request->input('price_adult');
+    $amountSeat = $request->input('amount_seats');
+
+    $rounds = Array();
+    for($i=0;$i<sizeOf($startDate);$i++){
+        $data = array($startDate[$i], $departureDate[$i], $priceChild[$i], $priceAdult[$i], $amountSeat[$i]);
+        array_push($rounds, $data);
     }
+
+    // dd($rounds);
+    foreach($rounds as $rs) {
+        DB::table('triprounds')
+            ->insertGetId([
+                "start_date" => $rs[0],
+                "departure_date" => $rs[1],
+                "price_child" => $rs[2],
+                "price_adult" => $rs[3],
+                "amount_seats" => $rs[4],
+                "triprounds_description" => $request->input('description'),
+                "trip_id" => $request->input('trip_id')
+            ]);
+    }
+        $schedule_day =$request->input('schedule_day');
+        $schedule_time =$request->input('schedule_time');
+        $schedule_place =$request->input('schedule_place');
+        $schedule_description=$request->input('schedule_description');
+      
+     $schedule =Array();
+      
+    for($i=0;$i<sizeOf($schedule_day);$i++){
+        $data = array($schedule_day[$i],  $schedule_time[$i], $schedule_place[$i],$schedule_description[$i]);
+        array_push($schedule, $data);
+     }
+    $i=1;
+  //$i=count($schedule_day);
+ // dd($i);
+  
+         
+        foreach($schedule as $sd){
+            if ($i <= count($schedule_day)){
+                    DB::table('schedules')
+                    ->insertGetId([
+                    "schedule_day" =>$sd[0],
+                    "schedule_time" =>$sd[1],
+                    "schedule_place" =>$sd[2],
+                    "schedule_description" =>$sd[3],
+                    "trip_id" =>$request->input('trip_id')
+                    ]);
+                } 
+
+   }
+            return redirect('/agency');
+    
+    }
+    
 
     /**
      * Display the specified resource.
@@ -96,7 +143,7 @@ class showtripController extends Controller
         DB::table('trips')
             ->where('id', $id)
             ->update([
-                 "trip_name" => $request->input('trips_name'),
+            "trip_name" => $request->input('trips_name'),
             "trip_nday" => $request->input('trip_nday'),
             "trip_nnight" => $request->input('trip_nnight'),
             "trip_province" => $request->input('trip_province'),
@@ -113,6 +160,6 @@ class showtripController extends Controller
      */
     public function destroy($id)
     {
-        //
+       DB::table('trips')->where('id', '=', $id)->delete();
     }
 }

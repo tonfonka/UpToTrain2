@@ -52,6 +52,7 @@ class addtriproundController extends Controller
            ]);
         $tripId = Trip::where('trips_name', $request->input('trips_name'))->first();
         return view('add_TripRound', ['tripId'=> $tripId->id]);
+        
     }
 
     /**

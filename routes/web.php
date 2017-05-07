@@ -48,9 +48,12 @@ Route::get('/listGrid', function()
 });
 
 Auth::routes();
+Route::get('/', function() {
+	return redirect('home');
+});
 
 Route::get('/home', 'HomeController@index');
-Route::get('/agency', 'tripController@index');
+Route::resource('/agency', 'showtripController');
 
 //Route::get('/addtripround', 'tripController@add_tripRound');
 
@@ -58,9 +61,19 @@ Route::resource('/addtrip','addtripController');
 Route::resource('/show','showtripController');
 Route::resource('/showtrip','tripAgencyController'); 
 Route::resource('/trip','tripController');
-Route::resource('/addtripround','addtriproundController');
+Route::post('/addtripround','addtriproundController@store');
 Route::resource('/completetrip','comptelttripController');
+Route::resource('/edittrip','addtripController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/register', 'UserController@register');
+
+Route::get('/search/schedule', 'UserController@schedule');
+
+Route::get('/search/index', 'UserController@index');
+
+Route::get('/schedule/{id}','UserController@schedule');
+Route::get('/search', 'UserController@search');

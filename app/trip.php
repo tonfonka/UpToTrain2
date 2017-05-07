@@ -35,5 +35,9 @@ class trip extends Model
          return $this->hasMany('App\schedules','id');
      }
 
+     /*public function delete($id){
+         DB::table('trips')->where('id', '=', $id)->delete();
+     }*/
+
 
 }
